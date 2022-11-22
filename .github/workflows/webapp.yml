@@ -1,0 +1,16 @@
+name: Deploy
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: aws flask sample app
+        run: | 
+             export APP_API_URL= "http://ror-env.eba-gfc3xmdx.ap-south-1.elasticbeanstalk.com/api"
+             npm install
+             quasar build
+             
